@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ETLangusta
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        if let url = URL(string: "https://api.myjson.com/bins/npnl0") {
+        let remoteDataProvider = RemoteDataProvider(url: url)
+        let config = Langusta.Config(defaultLanguage: "cs", dataProvider: remoteDataProvider)
+        let langusta = Langusta(config: config)
+        }
+
         return true
     }
 
