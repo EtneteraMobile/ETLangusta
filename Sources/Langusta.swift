@@ -10,7 +10,7 @@ import Foundation
 
 protocol LangustaType {
     func update()
-//    func change(_ language: Language)
+    //    func change(_ language: Language)
     func loca(for key: String) -> String
 }
 
@@ -63,12 +63,12 @@ public class Langusta {
 
     // MARK: - Initialization
 
-   public init(config: Config) {
-    self.config = config
+    public init(config: Config) {
+        self.config = config
         setupWith(config: config)
     }
 
-   private func setupWith(config: Config) {
+    private func setupWith(config: Config) {
         // LOCAL DATA
         let localData = config.dataProvider.getLocalData()
 
@@ -94,7 +94,7 @@ public class Langusta {
         // REMOTE DATA
         config.dataProvider.loadData { [weak self] (remoteData) in
             guard let wSelf = self else { return }
-             print("✅ Remote data loaded")
+            print("✅ Remote data loaded")
 
             // JSON
 
@@ -154,7 +154,7 @@ public class Langusta {
             }
             return bundle
         } catch {
-           print("\(error)")
+            print("\(error)")
             return nil
         }
     }
