@@ -1,0 +1,23 @@
+{
+    "version" : "123456789",
+    "localizations" : {
+        "cs" : {
+            "_" : {                                                             
+                "k1" : "val1",
+                "k2" : "val2",
+                "k3" : "val3"
+            },
+            "an" : { "k2" : "Android val2"},
+            "ios" : { "k3" : "iOS val3"}
+        },
+        "en" : {
+            "_" : {
+                "k1" : "english1",
+                "k2" : "english2",
+                "k3" : "english3"
+            },
+            "an" : { "k2" : "English Android"},
+            "ios" : { "k3" : "English iOS"}
+        }
+    }
+}

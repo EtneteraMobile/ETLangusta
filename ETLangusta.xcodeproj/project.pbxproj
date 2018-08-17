@@ -7,11 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3830CB112126E93200C77A1A /* dummy.json in Resources */ = {isa = PBXBuildFile; fileRef = 3830CB102126E93100C77A1A /* dummy.json */; };
+		3830CB122126E93400C77A1A /* dummy.json in Resources */ = {isa = PBXBuildFile; fileRef = 3830CB102126E93100C77A1A /* dummy.json */; };
+		3830CB132126E93500C77A1A /* dummy.json in Resources */ = {isa = PBXBuildFile; fileRef = 3830CB102126E93100C77A1A /* dummy.json */; };
+		3830CB142126E93600C77A1A /* dummy.json in Resources */ = {isa = PBXBuildFile; fileRef = 3830CB102126E93100C77A1A /* dummy.json */; };
+		3830CB162126E94700C77A1A /* Langusta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830CB152126E94600C77A1A /* Langusta.swift */; };
+		3830CB172126E94700C77A1A /* Langusta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830CB152126E94600C77A1A /* Langusta.swift */; };
+		3830CB182126E94700C77A1A /* Langusta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830CB152126E94600C77A1A /* Langusta.swift */; };
+		3830CB192126E94700C77A1A /* Langusta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830CB152126E94600C77A1A /* Langusta.swift */; };
+		3830CB1B2126E95400C77A1A /* LangustaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830CB1A2126E95400C77A1A /* LangustaData.swift */; };
+		3830CB1C2126E95400C77A1A /* LangustaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830CB1A2126E95400C77A1A /* LangustaData.swift */; };
+		3830CB1D2126E95400C77A1A /* LangustaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830CB1A2126E95400C77A1A /* LangustaData.swift */; };
+		3830CB1E2126E95400C77A1A /* LangustaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830CB1A2126E95400C77A1A /* LangustaData.swift */; };
 		52D6D9871BEFF229002C0205 /* ETLangusta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* ETLangusta.framework */; };
-		8933C7851EB5B820000D00A4 /* ETLangusta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7841EB5B820000D00A4 /* ETLangusta.swift */; };
-		8933C7861EB5B820000D00A4 /* ETLangusta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7841EB5B820000D00A4 /* ETLangusta.swift */; };
-		8933C7871EB5B820000D00A4 /* ETLangusta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7841EB5B820000D00A4 /* ETLangusta.swift */; };
-		8933C7881EB5B820000D00A4 /* ETLangusta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7841EB5B820000D00A4 /* ETLangusta.swift */; };
 		8933C78E1EB5B82C000D00A4 /* ETLangustaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7891EB5B82A000D00A4 /* ETLangustaTests.swift */; };
 		8933C78F1EB5B82C000D00A4 /* ETLangustaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7891EB5B82A000D00A4 /* ETLangustaTests.swift */; };
 		8933C7901EB5B82D000D00A4 /* ETLangustaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7891EB5B82A000D00A4 /* ETLangustaTests.swift */; };
@@ -44,12 +52,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3830CB102126E93100C77A1A /* dummy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dummy.json; sourceTree = "<group>"; };
+		3830CB152126E94600C77A1A /* Langusta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Langusta.swift; sourceTree = "<group>"; };
+		3830CB1A2126E95400C77A1A /* LangustaData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LangustaData.swift; sourceTree = "<group>"; };
 		52D6D97C1BEFF229002C0205 /* ETLangusta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ETLangusta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9861BEFF229002C0205 /* ETLangusta-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ETLangusta-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9E21BEFFF6E002C0205 /* ETLangusta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ETLangusta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9F01BEFFFBE002C0205 /* ETLangusta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ETLangusta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6DA0F1BF000BD002C0205 /* ETLangusta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ETLangusta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8933C7841EB5B820000D00A4 /* ETLangusta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ETLangusta.swift; sourceTree = "<group>"; };
 		8933C7891EB5B82A000D00A4 /* ETLangustaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ETLangustaTests.swift; sourceTree = "<group>"; };
 		AD2FAA261CD0B6D800659CF4 /* ETLangusta.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ETLangusta.plist; sourceTree = "<group>"; };
 		AD2FAA281CD0B6E100659CF4 /* ETLangustaTests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ETLangustaTests.plist; sourceTree = "<group>"; };
@@ -149,7 +159,9 @@
 		8933C7811EB5B7E0000D00A4 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				8933C7841EB5B820000D00A4 /* ETLangusta.swift */,
+				3830CB152126E94600C77A1A /* Langusta.swift */,
+				3830CB1A2126E95400C77A1A /* LangustaData.swift */,
+				3830CB102126E93100C77A1A /* dummy.json */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -221,6 +233,7 @@
 				52D6D9781BEFF229002C0205 /* Frameworks */,
 				52D6D9791BEFF229002C0205 /* Headers */,
 				52D6D97A1BEFF229002C0205 /* Resources */,
+				3830CB1F2126E9EB00C77A1A /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -407,6 +420,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3830CB112126E93200C77A1A /* dummy.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,6 +435,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3830CB132126E93500C77A1A /* dummy.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +443,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3830CB142126E93600C77A1A /* dummy.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +451,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3830CB122126E93400C77A1A /* dummy.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,12 +471,30 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3830CB1F2126E9EB00C77A1A /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		52D6D9771BEFF229002C0205 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8933C7851EB5B820000D00A4 /* ETLangusta.swift in Sources */,
+				3830CB162126E94700C77A1A /* Langusta.swift in Sources */,
+				3830CB1B2126E95400C77A1A /* LangustaData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,7 +510,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8933C7871EB5B820000D00A4 /* ETLangusta.swift in Sources */,
+				3830CB182126E94700C77A1A /* Langusta.swift in Sources */,
+				3830CB1D2126E95400C77A1A /* LangustaData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,7 +519,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8933C7881EB5B820000D00A4 /* ETLangusta.swift in Sources */,
+				3830CB192126E94700C77A1A /* Langusta.swift in Sources */,
+				3830CB1E2126E95400C77A1A /* LangustaData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,7 +528,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8933C7861EB5B820000D00A4 /* ETLangusta.swift in Sources */,
+				3830CB172126E94700C77A1A /* Langusta.swift in Sources */,
+				3830CB1C2126E95400C77A1A /* LangustaData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
