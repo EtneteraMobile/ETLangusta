@@ -21,7 +21,9 @@ class ViewController: UIViewController {
         setupViews()
 
         let dataProvider = RemoteDataProvider(url: URL(string: "https://api.myjson.com/bins/npnl0")!)
-        let config = Langusta.Config(defaultLanguage: "cz", dataProvider: dataProvider)
+//        let config = Langusta.Config(defaultLanguage: "cz", dataProvider: dataProvider)
+        let supportedLanguages = Langusta.getLanguageCodes(for: [.cs, .en])
+        let config = Langusta.Config(supportedLaguages: supportedLanguages, defaultLanguage: Langusta.Language.cs.rawValue, dataProvider: dataProvider)
         let langusta = Langusta(config: config)
 
         localizedLabel.text = "loca1"

@@ -8,18 +8,28 @@
 
 import Foundation
 
+protocol LangustaType {
+    func update()
+    func change(_ language: Language)
+    func loca(for key: String) -> String
+}
+
 public class Langusta {
 
-    public class Config {
-        var platform: Platform = .iOS // required
-        var multiLanguage: Bool = true
-        var defaultLanguage: String
-        var updateOnInit: Bool = true
+    public typealias LanguageCode = String
 
+    public class Config {
+        var platform: Platform = .iOS // require
+        var supportedLaguages: [LanguageCode]
+        var defaultLanguage: LanguageCode
         var dataProvider: DataProviderType
 
-       public init(platform: Platform = .iOS, defaultLanguage: String, dataProvider: DataProviderType) {
+        public init(platform: Platform = .iOS, supportedLaguages: [LanguageCode], defaultLanguage: String, dataProvider: DataProviderType) {
             self.platform = platform
+            self.supportedLaguages = supportedLaguages
+            guard supportedLaguages.contains(defaultLanguage) else {
+                preconditionFailure("default language is not in supported languages")
+            }
             self.defaultLanguage = defaultLanguage
             self.dataProvider = dataProvider
         }
@@ -31,7 +41,20 @@ public class Langusta {
         }
     }
 
+    public static func getLanguageCodes(for languages: [Language]) -> [LanguageCode] {
+        return languages.map {
+            $0.rawValue
+        }
+    }
+
     // MARK: Public
+
+    public enum Language: String {
+        case en
+        case cs
+        case sk
+        // TODO: more
+    }
 
     // MARK: Private
     private let fileManager = FileManager.default
