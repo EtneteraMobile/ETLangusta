@@ -14,6 +14,8 @@ protocol LangustaType {
     func loca(for key: String) -> String
 }
 
+typealias Localizations = [String: [String: String]]
+
 public class Langusta {
 
     public typealias LanguageCode = String
@@ -58,7 +60,11 @@ public class Langusta {
 
     // MARK: Private
 
-    private var localizations: [String: [String: String] ]!
+    private let userDefaults = UserDefaults(suiteName: "LangustaUserDefaults")! // swiftlint:disable:this force_unwrapping
+    private let versionKeyUD = "langusta.data.version"
+    private let localizationsKeyUD = "langusta.data.localizations"
+
+    private var localizations: Localizations!
     private var config: Config
 
     // MARK: - Initialization
@@ -72,34 +78,34 @@ public class Langusta {
         // LOCAL DATA
         let localData = config.dataProvider.getLocalData()
 
-        guard let localLangustaData = getLangustaData(from: localData) else {
+        guard let localLangustaData = decodeLangustaData(from: localData) else {
             preconditionFailure("Can't get langustaData from local data")
         }
 
-        let userDefaults = UserDefaults.standard // TODO: custom UD
-        if let localSavedVersion = userDefaults.string(forKey: "langusta-data-version"), localSavedVersion > localLangustaData.version {
+        // Already saved version is greater than version of local data
+        if let localSavedVersion = loadLocalVersion(), localSavedVersion > localLangustaData.version {
+            if let savedLocalizations = loadLocalSavedLocalizations() {
+                localizations = savedLocalizations
+            }
 
-            // Nepřepisuj verzi, načti localizations
-            // do nothing
-            // TODO: nacist do localizations z filu? ()
+        // There isn't saved version yet or version is smaller than version of local data
         } else {
-
-            // Vytvoř localizations
-            // Přenačíst lokální data
-            userDefaults.set(localLangustaData.version, forKey: "langusta-data-version")
+            // Save localizations and version from local data
+            save(localLangustaData)
             localizations = localLangustaData.localizations
-            // TODO: ulozit localizations do filu
         }
 
         // REMOTE DATA
         config.dataProvider.loadData { [weak self] (remoteData) in
             guard let wSelf = self else { return }
             print("✅ Remote data loaded")
-
-            // JSON
-
-            if let remoteLangustaData = wSelf.getLangustaData(from: remoteData), remoteLangustaData.version > localLangustaData.version {
+            // If version of remote data is greater than local data, save it
+            if let remoteLangustaData = wSelf.decodeLangustaData(from: remoteData), remoteLangustaData.version > localLangustaData.version {
+                wSelf.save(remoteLangustaData)
                 wSelf.localizations = remoteLangustaData.localizations
+            } else {
+                // Do nothing
+                // Use local data
             }
         }
 
@@ -118,76 +124,26 @@ public class Langusta {
         return value
     }
 
-    private func getLangustaData(from data: Data?) -> LangustaData? {
+    // MARK: - Private
+
+    private func loadLocalVersion() -> String? {
+        return userDefaults.string(forKey: versionKeyUD)
+    }
+
+    private func loadLocalSavedLocalizations() -> Localizations? {
+        return userDefaults.object(forKey: localizationsKeyUD) as? Localizations
+    }
+
+    private func save(_ langustaData: LangustaData) {
+        userDefaults.set(langustaData.version, forKey: versionKeyUD)
+        userDefaults.set(langustaData.localizations, forKey: localizationsKeyUD)
+    }
+
+    private func decodeLangustaData(from data: Data?) -> LangustaData? {
         guard let data = data else {
             return nil
         }
         let langustaData = try? JSONDecoder().decode(LangustaData.self, from: data)
         return langustaData
-    }
-
-    // MARK: - Private
-
-    // MARK: Creating localization files
-
-    // Creates localization file with given strings in documents directory and returns Bundle in which we can find it
-    // Path: Documents/*bundlePath*/*language*.lproj/*language*.strings
-    // http://alejandromp.com/blog/2017/6/24/loading-translations-dynamically-generating-localized-string-runtime/
-    private func updateLocalizationFileAndGetHisBundle(with content: [String]) -> Bundle? {
-        do {
-            if fileManager.fileExists(atPath: bundlePath.path) == false {
-                try fileManager.createDirectory(at: bundlePath, withIntermediateDirectories: true, attributes: nil)
-            }
-            // TODO: Make it generic
-            let langPath = bundlePath.appendingPathComponent("cs.lproj", isDirectory: true)
-            if fileManager.fileExists(atPath: langPath.path) == false {
-                try fileManager.createDirectory(at: langPath, withIntermediateDirectories: true, attributes: nil)
-            }
-            // TODO: Make it generic
-            let filePath = langPath.appendingPathComponent("cs.strings")
-
-            let data = content.joined().data(using: .utf32)
-            fileManager.createFile(atPath: filePath.path, contents: data, attributes: nil)
-
-            guard let bundle = Bundle(url: bundlePath) else {
-                fatalError()//LangustaError.bundleError
-            }
-            return bundle
-        } catch {
-            print("\(error)")
-            return nil
-        }
-    }
-
-    private let fileManager = FileManager.default
-    private let bundleName = Bundle.main.bundleIdentifier! //swiftlint:disable:this force_unwrapping
-    private lazy var bundlePath: URL = {
-        let documents = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!) //swiftlint:disable:this force_unwrapping
-        print("\n [Document's directory:] \(documents.absoluteString)\n")
-
-        let bundlePath = documents.appendingPathComponent(bundleName, isDirectory: true)
-        return bundlePath
-    }()
-
-    /// In case of an error while fetching and creating new localization file.
-    /// Checks if there is previously saved file. If true - returns it, otherwise return main bundle where is default file
-    func loadBackupBundle() -> Bundle {
-        let langPath = bundlePath.appendingPathComponent("cs.lproj", isDirectory: true)
-        let filePath = langPath.appendingPathComponent("cs.strings")
-
-        if fileManager.fileExists(atPath: filePath.path), let bundle = Bundle(url: bundlePath) {
-            return bundle
-        } else {
-            return Bundle.main
-        }
-    }
-}
-
-extension Dictionary {
-
-    mutating func update(with otherDictionary: Dictionary) {
-        for (key, value) in otherDictionary {
-            self.updateValue(value, forKey: key)
-        }
     }
 }
