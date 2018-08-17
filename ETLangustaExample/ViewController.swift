@@ -11,6 +11,8 @@ import ETLangusta
 
 class ViewController: UIViewController {
 
+    var langusta: Langusta?
+
     let localizedLabel = UILabel()
     let localizedLabel2 = UILabel()
     let localizedLabel3 = UILabel()
@@ -23,11 +25,19 @@ class ViewController: UIViewController {
         let dataProvider = DataProvider(backupFile: "dummy", url: URL(string: "https://api.myjson.com/bins/npnl0")!) // swiftlint:disable:this force_unwrapping
         let supportedLanguages = Langusta.getLanguageCodes(for: [.cs, .en])
         let config = Langusta.Config(supportedLaguages: supportedLanguages, defaultLanguage: Langusta.Language.cs.rawValue, dataProvider: dataProvider)
-        let langusta = Langusta(config: config)
+        langusta = Langusta(config: config)
+        langusta?.update()
+        langusta?.onUpdate = { [weak self] in
+            self?.updateLocalizations()
+        }
+        updateLocalizations()
+//        langusta?.change(Langusta.Language.en.rawValue)
+    }
 
-        localizedLabel.text = langusta.loca(for: "k1")
-        localizedLabel2.text = "loca2"
-        localizedLabel3.text = langusta.loca(for: "k3")
+    private func updateLocalizations() {
+        localizedLabel.text = langusta?.loca(for: "k1")
+        localizedLabel2.text = langusta?.loca(for: "k2")
+        localizedLabel3.text = langusta?.loca(for: "k3")
     }
 
     private func setupViews() {

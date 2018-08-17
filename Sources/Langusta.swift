@@ -10,11 +10,25 @@ import Foundation
 
 protocol LangustaType {
     func update()
-    //    func change(_ language: Language)
+    func change(_ language: Langusta.LanguageCode)
     func loca(for key: String) -> String
+    var onUpdate: (() -> Void)? { get set }
 }
 
-public class Langusta {
+public class Langusta: LangustaType {
+
+    public func change(_ language: Langusta.LanguageCode) {
+        config.defaultLanguage = language
+        onUpdate?()
+    }
+    
+    public var onUpdate: (() -> Void)? // TODO: future event (ETBinding)
+
+    public func update() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: { [weak self] in
+            self?.onUpdate?()
+        })
+    }
 
     public typealias LanguageCode = String
 
@@ -65,15 +79,21 @@ public class Langusta {
 
     public init(config: Config) {
         self.config = config
-        setupWith(config: config)
+        setup()
     }
 
-    private func setupWith(config: Config) {
-        // LOCAL DATA
+    private func setup() {
+
         let localData = config.dataProvider.getLocalData()
 
         guard let localLangustaData = getLangustaData(from: localData) else {
             preconditionFailure("Can't get langustaData from local data")
+        }
+
+        config.supportedLaguages.forEach { (language) in
+            guard localLangustaData.localizations[language] != nil else {
+                preconditionFailure("Supported language: \(language) not found in backup .json")
+            }
         }
 
         let userDefaults = UserDefaults.standard // TODO: custom UD
