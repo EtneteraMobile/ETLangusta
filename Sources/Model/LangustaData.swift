@@ -9,8 +9,9 @@
 import Foundation
 
 struct LangustaData: Decodable {
+
     var version: String
-    var localizations: [String: [String: String]] = [:]
+    var localizations: Langusta.Localizations = [:]
 
     private var languages: [Language]
 

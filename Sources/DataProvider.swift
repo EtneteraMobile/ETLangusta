@@ -112,10 +112,10 @@ public class DataProvider: DataProviderType {
                 let data = try Data(contentsOf: url)
                 return data
             } catch {
-                preconditionFailure("Can't make data from \(filename)json")
+                preconditionFailure("🦀 Can't make data from \(filename).json")
             }
         }
-        preconditionFailure("Can't find \(filename).json in main bundle")
+        preconditionFailure("🦀 Can't find \(filename).json in main bundle")
     }
 
 }

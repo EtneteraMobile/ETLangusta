@@ -12,7 +12,11 @@ protocol LangustaType {
     func update()
     func change(_ language: Langusta.LanguageCode)
     func loca(for key: String) -> String
+    func loca(for key: String, with argument: String) -> String
+    func loca(for key: String, with arguments: [String]) -> String
+
     var onUpdate: (() -> Void)? { get set }
+    var onLocalizationFailure: ((_ message: String) -> Void)? { get set }
 }
 
 public class Langusta: LangustaType {
@@ -24,8 +28,9 @@ public class Langusta: LangustaType {
         config.defaultLanguage = language
         onUpdate?()
     }
-    
+
     public var onUpdate: (() -> Void)? // TODO: future event (ETBinding)
+    public var onLocalizationFailure: ((_ message: String) -> Void)?
 
     public class Config {
         var platform: Platform = .iOS // require
@@ -74,6 +79,12 @@ public class Langusta: LangustaType {
     private var localizations: Localizations!
     private var config: Config
 
+    private var valuePolicy: ValuePolicy = .noException
+    enum ValuePolicy {
+        case noException
+        case exceptionIfMissing
+    }
+
     // MARK: - Initialization
 
     public init(config: Config) {
@@ -81,7 +92,53 @@ public class Langusta: LangustaType {
 
         getLocalLocalizations()
 
+//        getRemoteLocalizations()
+    }
+
+    // MARK: - Methods
+
+    // MARK: Public
+
+    public func loca(for key: String) -> String {
+        return localize(key)
+    }
+
+    public func loca(for key: String, with argument: String) -> String {
+        return String(format: localize(key), argument)
+    }
+
+    public func loca(for key: String, with arguments: [String]) -> String {
+        return String(format: localize(key), arguments: arguments)
+    }
+
+    public func update() {
         getRemoteLocalizations()
+    }
+
+    // MARK: Private
+
+    private func localize(_ key: String) -> String {
+        guard let language = localizations[config.defaultLanguage] else {
+            let error = LangustaError.languageNotFound(config.defaultLanguage)
+            if valuePolicy == .exceptionIfMissing {
+                preconditionFailure(error.localizedDescription)
+            } else {
+                onLocalizationFailure?(error.localizedDescription)
+                return "*\(key)*"
+            }
+        }
+
+        guard let value = language[key] else {
+            let error = LangustaError.keyNotFound(key, config.defaultLanguage)
+            if valuePolicy == .exceptionIfMissing {
+                preconditionFailure(error.localizedDescription)
+            } else {
+                onLocalizationFailure?(error.localizedDescription)
+                return "*\(key)*"
+            }
+        }
+
+        return value
     }
 
     private func getLocalLocalizations() {
@@ -111,7 +168,7 @@ public class Langusta: LangustaType {
     }
 
     private func getRemoteLocalizations() {
-        config.dataProvider.loadData { [weak self] (remoteData) in
+        config.dataProvider.loadData { [weak self] (remoteData, error) in
             guard let wSelf = self else {
                 return
             }
@@ -132,23 +189,6 @@ public class Langusta: LangustaType {
                 wSelf.onUpdate?() // TODO!!!
             }
         }
-    }
-
-    // MARK: - Public
-
-    public func loca(for key: String) -> String {
-        guard let language = localizations[config.defaultLanguage] else {
-            preconditionFailure("Language does not exist")
-        }
-
-        guard let value = language[key] else {
-            preconditionFailure("Value does not exist for given key")
-        }
-        return value
-    }
-
-    public func update() {
-        getRemoteLocalizations()
     }
 
     // MARK: - Private
