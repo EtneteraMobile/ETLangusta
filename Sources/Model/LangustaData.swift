@@ -10,9 +10,9 @@ import Foundation
 
 struct LangustaData: Decodable {
     var version: String
-    var dictionary: [String: [String: String]] = [:]
+    var localizations: [String: [String: String]] = [:]
 
-    var languages: [Language]
+    private var languages: [Language]
 
     private enum CodingKeys: String, CodingKey {
         case version
@@ -31,12 +31,12 @@ struct LangustaData: Decodable {
 
             let mergedContent = item.value.commonContent.merging(item.value.iosContent, uniquingKeysWith: { (_, last) in last })
 
-            dictionary[item.key] = mergedContent
+            localizations[item.key] = mergedContent
         }
     }
 }
 
-struct Language: Decodable {
+private struct Language: Decodable {
     var name: String?
     var commonContent: [String: String]
     var iosContent: [String: String]

@@ -10,7 +10,7 @@ import Foundation
 
 protocol LangustaType {
     func update()
-    func change(_ language: Language)
+//    func change(_ language: Language)
     func loca(for key: String) -> String
 }
 
@@ -58,7 +58,7 @@ public class Langusta {
 
     // MARK: Private
 
-    private var dictionary: [String: [String: String] ]!
+    private var localizations: [String: [String: String] ]!
     private var config: Config
 
     // MARK: - Initialization
@@ -69,64 +69,46 @@ public class Langusta {
     }
 
    private func setupWith(config: Config) {
-    // LOCAL DATA
-    let localData = config.dataProvider.getLocalData()
+        // LOCAL DATA
+        let localData = config.dataProvider.getLocalData()
 
-    guard let localLangustaData = getLangustaData(from: localData) else {
-        preconditionFailure("Can't get langustaData from local data")
-    }
-    dictionary = localLangustaData.dictionary
-
-    let userDefaults = UserDefaults.standard // TODO: custom UD
-    if let localSavedVersion = userDefaults.string(forKey: "langusta-data-version"), localSavedVersion > localLangustaData.version {
-
-        // Nepřepisuj verzi, načti dictionary
-        // do nothing
-    } else {
-
-        // Vytvoř dictionary
-        // Přenačíst lokální data
-        userDefaults.set(localLangustaData.version, forKey: "langusta-data-version")
-    }
-
-    // REMOTE DATA
-    config.dataProvider.loadData { [weak self] (remoteData) in
-        guard let wSelf = self else { return }
-         print("✅ Remote data loaded")
-
-        // JSON
-
-        if let remoteLangustaData = wSelf.getLangustaData(from: remoteData), remoteLangustaData.version > localLangustaData.version {
-            wSelf.dictionary = remoteLangustaData.dictionary
+        guard let localLangustaData = getLangustaData(from: localData) else {
+            preconditionFailure("Can't get langustaData from local data")
         }
 
-//        // Get LangustaData (languages) from JSON
-//        self.getLangustaData(from: data) (langustaData) in
-//            print("✅ Langusta data created from JSON")
-//
-//            // Make strings in ("Key" = "Value") format
-//            guard let langustaData = langustaData else { fatalError() }
-//
-//            guard let strings = self.makeLocalizationStrings(from: langustaData) else { fatalError() }
-//
-//            // Make "language".strings files and return where it is (Bundle)
-//            guard let bundle = self.updateLocalizationFileAndGetHisBundle(with: strings) else { fatalError() }
-//
-//            // Use this bundle with NSLocalized
-//
-//            print("✅ Having Bundle with identifier: \(bundle.bundleIdentifier)")
-//
-//        }
-    }
+        let userDefaults = UserDefaults.standard // TODO: custom UD
+        if let localSavedVersion = userDefaults.string(forKey: "langusta-data-version"), localSavedVersion > localLangustaData.version {
 
-    // TODO: Error - use backup bundle
+            // Nepřepisuj verzi, načti localizations
+            // do nothing
+            // TODO: nacist do localizations z filu? ()
+        } else {
+
+            // Vytvoř localizations
+            // Přenačíst lokální data
+            userDefaults.set(localLangustaData.version, forKey: "langusta-data-version")
+            localizations = localLangustaData.localizations
+            // TODO: ulozit localizations do filu
+        }
+
+        // REMOTE DATA
+        config.dataProvider.loadData { [weak self] (remoteData) in
+            guard let wSelf = self else { return }
+             print("✅ Remote data loaded")
+
+            // JSON
+
+            if let remoteLangustaData = wSelf.getLangustaData(from: remoteData), remoteLangustaData.version > localLangustaData.version {
+                wSelf.localizations = remoteLangustaData.localizations
+            }
+        }
 
     }
 
     // MARK: - Public
 
     public func loca(for key: String) -> String {
-        guard let language = dictionary[config.defaultLanguage] else {
+        guard let language = localizations[config.defaultLanguage] else {
             preconditionFailure("Language does not exist")
         }
 
@@ -147,25 +129,6 @@ public class Langusta {
     // MARK: - Private
 
     // MARK: Creating localization files
-
-    private func makeLocalizationStrings(from data: LangustaData) -> [String]? {
-        var localizationStrings: [String] = []
-
-        // TODO: remove only czech language, make it generic
-        for language in data.languages where language.name == "cs" {
-            var commonPlatformContent = language.commonContent
-            commonPlatformContent.update(with: language.iosContent)
-
-            /// Create rows in correct format
-            let commonContent = commonPlatformContent.compactMap { key, value in
-                "\"\(key)\" = \"\(value)\";\n"
-            }
-            localizationStrings += commonContent
-
-            return localizationStrings
-        }
-        return nil
-    }
 
     // Creates localization file with given strings in documents directory and returns Bundle in which we can find it
     // Path: Documents/*bundlePath*/*language*.lproj/*language*.strings
