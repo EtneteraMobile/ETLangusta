@@ -14,9 +14,10 @@ protocol LangustaType {
     func loca(for key: String) -> String
 }
 
-typealias Localizations = [String: [String: String]]
+public typealias Localizations = [String: [String: String]]
 
-public class Langusta {
+public class Langusta: LangustaType {
+
 
     public typealias LanguageCode = String
 
@@ -71,11 +72,13 @@ public class Langusta {
 
     public init(config: Config) {
         self.config = config
-        setupWith(config: config)
+
+        getLocalLocalizations()
+
+        getRemoteLocalizations()
     }
 
-    private func setupWith(config: Config) {
-        // LOCAL DATA
+    private func getLocalLocalizations() {
         let localData = config.dataProvider.getLocalData()
 
         guard let localLangustaData = decodeLangustaData(from: localData) else {
@@ -88,27 +91,30 @@ public class Langusta {
                 localizations = savedLocalizations
             }
 
-        // There isn't saved version yet or version is smaller than version of local data
+            // There isn't saved version yet or version is smaller than version of local data
         } else {
             // Save localizations and version from local data
             save(localLangustaData)
             localizations = localLangustaData.localizations
         }
+    }
 
-        // REMOTE DATA
+    private func getRemoteLocalizations() {
         config.dataProvider.loadData { [weak self] (remoteData) in
             guard let wSelf = self else { return }
-            print("✅ Remote data loaded")
-            // If version of remote data is greater than local data, save it
-            if let remoteLangustaData = wSelf.decodeLangustaData(from: remoteData), remoteLangustaData.version > localLangustaData.version {
-                wSelf.save(remoteLangustaData)
-                wSelf.localizations = remoteLangustaData.localizations
+
+            if let remoteLangustaData = wSelf.decodeLangustaData(from: remoteData) {
+
+                // If version of remote data is greater than local data, save it
+                if let localSavedVersion = wSelf.loadLocalVersion(), remoteLangustaData.version > localSavedVersion {
+                    wSelf.save(remoteLangustaData)
+                    wSelf.localizations = remoteLangustaData.localizations
+                }
             } else {
                 // Do nothing
                 // Use local data
             }
         }
-
     }
 
     // MARK: - Public
@@ -122,6 +128,10 @@ public class Langusta {
             preconditionFailure("Value does not exist for given key")
         }
         return value
+    }
+
+    public func update() {
+        getRemoteLocalizations()
     }
 
     // MARK: - Private
