@@ -57,56 +57,94 @@ public class Langusta {
     }
 
     // MARK: Private
-    private let fileManager = FileManager.default
-    private let bundleName = Bundle.main.bundleIdentifier! //swiftlint:disable:this force_unwrapping
-    private lazy var bundlePath: URL = {
-        let documents = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!) //swiftlint:disable:this force_unwrapping
-      print("\n [Document's directory:] \(documents.absoluteString)\n")
 
-        let bundlePath = documents.appendingPathComponent(bundleName, isDirectory: true)
-        return bundlePath
-    }()
+    private var dictionary: [String: [String: String] ]!
+    private var config: Config
 
     // MARK: - Initialization
 
    public init(config: Config) {
+    self.config = config
         setupWith(config: config)
     }
 
    private func setupWith(config: Config) {
+    // LOCAL DATA
+    let localData = config.dataProvider.getLocalData()
 
-    config.dataProvider.loadData { (data) in
-         print("✅ Data loaded")
+    guard let localLangustaData = getLangustaData(from: localData) else {
+        preconditionFailure("Can't get langustaData from local data")
+    }
+    dictionary = localLangustaData.dictionary
 
-        // Get LangustaData (languages) from JSON
-        self.getLangustaData(from: data) { (langustaData) in
-            print("✅ Langusta data created from JSON")
+    let userDefaults = UserDefaults.standard // TODO: custom UD
+    if let localSavedVersion = userDefaults.string(forKey: "langusta-data-version"), localSavedVersion > localLangustaData.version {
 
-            // Make strings in ("Key" = "Value") format
-            guard let langustaData = langustaData else { fatalError() }
-            guard let strings = self.makeLocalizationStrings(from: langustaData) else { fatalError() }
+        // Nepřepisuj verzi, načti dictionary
+        // do nothing
+    } else {
 
-            // Make "language".strings files and return where it is (Bundle)
-            guard let bundle = self.updateLocalizationFileAndGetHisBundle(with: strings) else { fatalError() }
+        // Vytvoř dictionary
+        // Přenačíst lokální data
+        userDefaults.set(localLangustaData.version, forKey: "langusta-data-version")
+    }
 
-            // Use this bundle with NSLocalized
+    // REMOTE DATA
+    config.dataProvider.loadData { [weak self] (remoteData) in
+        guard let wSelf = self else { return }
+         print("✅ Remote data loaded")
 
-            print("✅ Having Bundle with identifier: \(bundle.bundleIdentifier)")
+        // JSON
 
+        if let remoteLangustaData = wSelf.getLangustaData(from: remoteData), remoteLangustaData.version > localLangustaData.version {
+            wSelf.dictionary = remoteLangustaData.dictionary
         }
+
+//        // Get LangustaData (languages) from JSON
+//        self.getLangustaData(from: data) (langustaData) in
+//            print("✅ Langusta data created from JSON")
+//
+//            // Make strings in ("Key" = "Value") format
+//            guard let langustaData = langustaData else { fatalError() }
+//
+//            guard let strings = self.makeLocalizationStrings(from: langustaData) else { fatalError() }
+//
+//            // Make "language".strings files and return where it is (Bundle)
+//            guard let bundle = self.updateLocalizationFileAndGetHisBundle(with: strings) else { fatalError() }
+//
+//            // Use this bundle with NSLocalized
+//
+//            print("✅ Having Bundle with identifier: \(bundle.bundleIdentifier)")
+//
+//        }
     }
 
     // TODO: Error - use backup bundle
 
     }
 
-    private func getLangustaData(from data: Data?, completion: ((LangustaData?) -> Void)) {
+    // MARK: - Public
+
+    public func loca(for key: String) -> String {
+        guard let language = dictionary[config.defaultLanguage] else {
+            preconditionFailure("Language does not exist")
+        }
+
+        guard let value = language[key] else {
+            preconditionFailure("Value does not exist for given key")
+        }
+        return value
+    }
+
+    private func getLangustaData(from data: Data?) -> LangustaData? {
         guard let data = data else {
-            return
+            return nil
         }
         let langustaData = try? JSONDecoder().decode(LangustaData.self, from: data)
-        completion(langustaData)
+        return langustaData
     }
+
+    // MARK: - Private
 
     // MARK: Creating localization files
 
@@ -157,6 +195,16 @@ public class Langusta {
             return nil
         }
     }
+
+    private let fileManager = FileManager.default
+    private let bundleName = Bundle.main.bundleIdentifier! //swiftlint:disable:this force_unwrapping
+    private lazy var bundlePath: URL = {
+        let documents = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!) //swiftlint:disable:this force_unwrapping
+        print("\n [Document's directory:] \(documents.absoluteString)\n")
+
+        let bundlePath = documents.appendingPathComponent(bundleName, isDirectory: true)
+        return bundlePath
+    }()
 
     /// In case of an error while fetching and creating new localization file.
     /// Checks if there is previously saved file. If true - returns it, otherwise return main bundle where is default file

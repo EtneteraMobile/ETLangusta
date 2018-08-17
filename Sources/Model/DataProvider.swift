@@ -9,16 +9,23 @@
 import Foundation
 
 public protocol DataProviderType {
-
+    func getLocalData() -> Data
     func loadData(completion: @escaping ((Data?) -> Void))
 }
 
-public class RemoteDataProvider: DataProviderType {
+public class DataProvider: DataProviderType {
 
+    let backupFile: String
     let url: URL
 
-    public init(url: URL) {
+    public init(backupFile: String, url: URL) {
+        self.backupFile = backupFile
         self.url = url
+    }
+
+    public func getLocalData() -> Data {
+        return getJsonFromMainBundle(with: backupFile)
+
     }
 
     public func loadData(completion: @escaping ((Data?) -> Void)) {
@@ -30,9 +37,6 @@ public class RemoteDataProvider: DataProviderType {
     // MARK: Fetching and decoding JSON
 
     private func fetchLocalizationJSON(from url: URL, completion: @escaping ((Data?) -> Void)) {
-        //        let jsonFile = loadJson(filename: "dummy")!
-        //        completion(jsonFile)
-
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
             if let data = data {
                 print("✅ Fetched Data from remote url.")
@@ -48,16 +52,16 @@ public class RemoteDataProvider: DataProviderType {
     // MARK: - Helper methods
 
     // Temporary function - get local JSON File
-    private func loadJson(filename fileName: String) -> Data? {
-        if let url = Bundle.main.url(forResource: fileName, withExtension: "json") {
+    private func getJsonFromMainBundle(with filename: String) -> Data {
+        if let url = Bundle.main.url(forResource: filename, withExtension: "json") {
             do {
                 let data = try Data(contentsOf: url)
                 return data
             } catch {
-                print("\(error)")
+                preconditionFailure("Can't make data from \(filename)json")
             }
         }
-        return nil
+        preconditionFailure("Can't find \(filename).json in main bundle")
     }
 
 }
