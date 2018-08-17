@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     let localizedLabel = UILabel()
     let localizedLabel2 = UILabel()
     let localizedLabel3 = UILabel()
+    let button = UIButton()
 
     override func loadView() {
         super.loadView()
@@ -23,21 +24,20 @@ class ViewController: UIViewController {
         setupViews()
 
         let dataProvider = DataProvider(backupFile: "dummy", url: URL(string: "https://api.myjson.com/bins/npnl0")!) // swiftlint:disable:this force_unwrapping
-        let supportedLanguages = Langusta.getLanguageCodes(for: [.cs, .en])
-        let config = Langusta.Config(supportedLaguages: supportedLanguages, defaultLanguage: Langusta.Language.cs.rawValue, dataProvider: dataProvider)
+        let config = Langusta.Config(supportedLaguages: [.cs, .en, .custom(code: "esperanto")], defaultLanguage: .cs, dataProvider: dataProvider)
         langusta = Langusta(config: config)
-        langusta?.update()
+        langusta?.fetch()
         langusta?.onUpdate = { [weak self] in
             self?.updateLocalizations()
         }
         updateLocalizations()
-//        langusta?.change(Langusta.Language.en.rawValue)
     }
 
     private func updateLocalizations() {
-        localizedLabel.text = langusta?.loca(for: "k1")
+        localizedLabel.text = langusta?.loca(for: "k1", with: ["Pivo", "Rum"])
         localizedLabel2.text = langusta?.loca(for: "k2")
         localizedLabel3.text = langusta?.loca(for: "k3")
+        button.setTitle("Change language", for: .normal)
     }
 
     private func setupViews() {
@@ -58,5 +58,42 @@ class ViewController: UIViewController {
         localizedLabel3.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         localizedLabel3.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
         localizedLabel3.topAnchor.constraint(equalTo: localizedLabel2.bottomAnchor, constant: 24).isActive = true
+
+        view.addSubview(button)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        button.topAnchor.constraint(equalTo: localizedLabel3.bottomAnchor, constant: 20).isActive = true
+
+        button.backgroundColor = .gray
+        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(.black, for: .highlighted)
+        button.layer.cornerRadius = 25
+
+        button.addTarget(self, action: #selector(onButtonTap), for: .touchUpInside)
+    }
+
+    @objc private func onButtonTap() {
+        let optionMenu = UIAlertController(title: nil, message: "Choose Language", preferredStyle: .actionSheet)
+        let cs = UIAlertAction(title: "Cesky", style: .default) { [unowned self] _ in
+            self.langusta?.change(.cs)
+        }
+        let sk = UIAlertAction(title: "English", style: .default) { [unowned self] _ in
+            self.langusta?.change(.en)
+        }
+        let pl = UIAlertAction(title: "Esperanto", style: .default) { [unowned self] _ in
+            self.langusta?.change(.custom(code: "esperanto"))
+        }
+        let esperanto = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            print("Cancelled")
+        }
+
+        optionMenu.addAction(cs)
+        optionMenu.addAction(sk)
+        optionMenu.addAction(pl)
+        optionMenu.addAction(esperanto)
+
+        self.present(optionMenu, animated: true, completion: nil)
     }
 }

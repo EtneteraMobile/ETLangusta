@@ -1,9 +1,9 @@
 {
-    "version" : "123456789",
+    "version" : "1",
     "localizations" : {
         "cs" : {
             "_" : {                                                             
-                "k1" : "v",
+                "k1" : "Dáme si %@ a %@",
                 "k2" : "val2",
                 "k3" : "val3"
             },
@@ -18,6 +18,15 @@
             },
             "an" : { "k2" : "English Android"},
             "ios" : { "k3" : "English iOS"}
+        },
+        "esperanto" : {
+            "_" : {
+                "k1" : "esperanto 1",
+                "k2" : "esperanto 2",
+                "k3" : "esperanto 3"
+            },
+            "an" : { "k2" : "esperanto Android"},
+            "ios" : { "k3" : "esperanto iOS"}
         }
     }
 }

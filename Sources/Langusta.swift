@@ -9,8 +9,8 @@
 import Foundation
 
 protocol LangustaType {
-    func update()
-    func change(_ language: Langusta.LanguageCode)
+    func fetch()
+    func change(_ language: Langusta.Language)
     func loca(for key: String) -> String
     func loca(for key: String, with argument: String) -> String
     func loca(for key: String, with arguments: [String]) -> String
@@ -24,7 +24,7 @@ public class Langusta: LangustaType {
     public typealias Localizations = [String: [String: String]]
     public typealias LanguageCode = String
 
-    public func change(_ language: Langusta.LanguageCode) {
+    public func change(_ language: Language) {
         config.defaultLanguage = language
         onUpdate?()
     }
@@ -34,18 +34,20 @@ public class Langusta: LangustaType {
 
     public class Config {
         var platform: Platform = .iOS // require
-        var supportedLaguages: [LanguageCode]
-        var defaultLanguage: LanguageCode
+        var supportedLaguages: [Language]
+        var defaultLanguage: Language
         var dataProvider: DataProviderType
+        var fetchOnInit: Bool
 
-        public init(platform: Platform = .iOS, supportedLaguages: [LanguageCode], defaultLanguage: String, dataProvider: DataProviderType) {
+        public init(platform: Platform = .iOS, supportedLaguages: [Language], defaultLanguage: Language, dataProvider: DataProviderType, fetchOnInit: Bool = false) {
             self.platform = platform
             self.supportedLaguages = supportedLaguages
-            guard supportedLaguages.contains(defaultLanguage) else {
+            guard Langusta.getLanguageCodes(for: supportedLaguages).contains(defaultLanguage.code) else {
                 preconditionFailure("default language is not in supported languages")
             }
             self.defaultLanguage = defaultLanguage
             self.dataProvider = dataProvider
+            self.fetchOnInit = fetchOnInit
         }
 
         public enum Platform: String {
@@ -57,17 +59,31 @@ public class Langusta: LangustaType {
 
     public static func getLanguageCodes(for languages: [Language]) -> [LanguageCode] {
         return languages.map {
-            $0.rawValue
+            $0.code
         }
     }
 
     // MARK: Public
 
-    public enum Language: String {
+    public enum Language {
+        // TODO: add languages 
         case en
         case cs
         case sk
-        // TODO: more
+        case custom(code: String)
+
+        public var code: String {
+            switch self {
+            case .en:
+                return "en"
+            case .cs:
+                return "cs"
+            case .sk:
+                return "sk"
+            case .custom(let code):
+                return code
+            }
+        }
     }
 
     // MARK: Private
@@ -79,7 +95,7 @@ public class Langusta: LangustaType {
     private var localizations: Localizations!
     private var config: Config
 
-    private var valuePolicy: ValuePolicy = .noException
+    private var valuePolicy: ValuePolicy = .exceptionIfMissing
     enum ValuePolicy {
         case noException
         case exceptionIfMissing
@@ -90,9 +106,10 @@ public class Langusta: LangustaType {
     public init(config: Config) {
         self.config = config
 
-        getLocalLocalizations()
-
-//        getRemoteLocalizations()
+        setupLocalizations()
+        if config.fetchOnInit {
+            fetch()
+        }
     }
 
     // MARK: - Methods
@@ -111,15 +128,11 @@ public class Langusta: LangustaType {
         return String(format: localize(key), arguments: arguments)
     }
 
-    public func update() {
-        getRemoteLocalizations()
-    }
-
     // MARK: Private
 
     private func localize(_ key: String) -> String {
-        guard let language = localizations[config.defaultLanguage] else {
-            let error = LangustaError.languageNotFound(config.defaultLanguage)
+        guard let language = localizations[config.defaultLanguage.code] else {
+            let error = LangustaError.languageNotFound(config.defaultLanguage.code)
             if valuePolicy == .exceptionIfMissing {
                 preconditionFailure(error.localizedDescription)
             } else {
@@ -129,7 +142,7 @@ public class Langusta: LangustaType {
         }
 
         guard let value = language[key] else {
-            let error = LangustaError.keyNotFound(key, config.defaultLanguage)
+            let error = LangustaError.keyNotFound(key, config.defaultLanguage.code)
             if valuePolicy == .exceptionIfMissing {
                 preconditionFailure(error.localizedDescription)
             } else {
@@ -141,7 +154,7 @@ public class Langusta: LangustaType {
         return value
     }
 
-    private func getLocalLocalizations() {
+    private func setupLocalizations() {
         let localData = config.dataProvider.getLocalData()
 
         guard let localLangustaData = decodeLangustaData(from: localData) else {
@@ -149,7 +162,7 @@ public class Langusta: LangustaType {
         }
 
         config.supportedLaguages.forEach { (language) in
-            guard localLangustaData.localizations[language] != nil else {
+            guard localLangustaData.localizations[language.code] != nil else {
                 preconditionFailure("Supported language: \(language) not found in backup .json")
             }
         }
@@ -167,8 +180,8 @@ public class Langusta: LangustaType {
         }
     }
 
-    private func getRemoteLocalizations() {
-        config.dataProvider.loadData { [weak self] (remoteData, error) in
+    public func fetch() {
+        config.dataProvider.loadData { [weak self] (remoteData) in
             guard let wSelf = self else {
                 return
             }
@@ -178,7 +191,7 @@ public class Langusta: LangustaType {
                 // If version of remote data is greater than local data, save it
                 if let localSavedVersion = wSelf.loadLocalVersion(), remoteLangustaData.version > localSavedVersion {
                     wSelf.save(remoteLangustaData)
-                    wSelf.localizations = remoteLangustaData.localizations
+                    wSelf.localizations = wSelf.localizations.merging(remoteLangustaData.localizations, uniquingKeysWith: { (_, last) in last })
                 }
             } else {
                 // Do nothing
