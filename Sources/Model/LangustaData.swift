@@ -21,9 +21,9 @@ struct LangustaData: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         version = try container.decode(String.self, forKey: .version)
 
-        let data = try container.decode([String: Language].self, forKey: .languages)
+        let languagesWithContent = try container.decode([String: Language].self, forKey: .languages)
         languages = []
-        for item in data {
+        for item in languagesWithContent {
             let language = Language(name: item.key, commonContent: item.value.commonContent, iosContent: item.value.iosContent)
             languages.append(language)
         }

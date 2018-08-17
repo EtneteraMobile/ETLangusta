@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3830CB112126E93200C77A1A /* dummy.json in Resources */ = {isa = PBXBuildFile; fileRef = 3830CB102126E93100C77A1A /* dummy.json */; };
-		3830CB122126E93400C77A1A /* dummy.json in Resources */ = {isa = PBXBuildFile; fileRef = 3830CB102126E93100C77A1A /* dummy.json */; };
-		3830CB132126E93500C77A1A /* dummy.json in Resources */ = {isa = PBXBuildFile; fileRef = 3830CB102126E93100C77A1A /* dummy.json */; };
-		3830CB142126E93600C77A1A /* dummy.json in Resources */ = {isa = PBXBuildFile; fileRef = 3830CB102126E93100C77A1A /* dummy.json */; };
 		3830CB162126E94700C77A1A /* Langusta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830CB152126E94600C77A1A /* Langusta.swift */; };
 		3830CB172126E94700C77A1A /* Langusta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830CB152126E94600C77A1A /* Langusta.swift */; };
 		3830CB182126E94700C77A1A /* Langusta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830CB152126E94600C77A1A /* Langusta.swift */; };
@@ -19,6 +15,15 @@
 		3830CB1C2126E95400C77A1A /* LangustaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830CB1A2126E95400C77A1A /* LangustaData.swift */; };
 		3830CB1D2126E95400C77A1A /* LangustaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830CB1A2126E95400C77A1A /* LangustaData.swift */; };
 		3830CB1E2126E95400C77A1A /* LangustaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830CB1A2126E95400C77A1A /* LangustaData.swift */; };
+		3830CB252126F13700C77A1A /* dummy.json in Resources */ = {isa = PBXBuildFile; fileRef = 3830CB102126E93100C77A1A /* dummy.json */; };
+		3830CB272126F27000C77A1A /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830CB262126F27000C77A1A /* DataProvider.swift */; };
+		3830CB282126F27000C77A1A /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830CB262126F27000C77A1A /* DataProvider.swift */; };
+		3830CB292126F27000C77A1A /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830CB262126F27000C77A1A /* DataProvider.swift */; };
+		3830CB2A2126F27000C77A1A /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830CB262126F27000C77A1A /* DataProvider.swift */; };
+		3830CB2D2126F2BB00C77A1A /* LangustaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830CB2C2126F2BB00C77A1A /* LangustaError.swift */; };
+		3830CB2E2126F2BB00C77A1A /* LangustaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830CB2C2126F2BB00C77A1A /* LangustaError.swift */; };
+		3830CB2F2126F2BB00C77A1A /* LangustaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830CB2C2126F2BB00C77A1A /* LangustaError.swift */; };
+		3830CB302126F2BB00C77A1A /* LangustaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830CB2C2126F2BB00C77A1A /* LangustaError.swift */; };
 		52D6D9871BEFF229002C0205 /* ETLangusta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* ETLangusta.framework */; };
 		657BE3DC2126C61D004DA5BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657BE3DB2126C61D004DA5BA /* AppDelegate.swift */; };
 		657BE3DE2126C61D004DA5BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657BE3DD2126C61D004DA5BA /* ViewController.swift */; };
@@ -83,6 +88,8 @@
 		3830CB102126E93100C77A1A /* dummy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dummy.json; sourceTree = "<group>"; };
 		3830CB152126E94600C77A1A /* Langusta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Langusta.swift; sourceTree = "<group>"; };
 		3830CB1A2126E95400C77A1A /* LangustaData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LangustaData.swift; sourceTree = "<group>"; };
+		3830CB262126F27000C77A1A /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		3830CB2C2126F2BB00C77A1A /* LangustaError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LangustaError.swift; sourceTree = "<group>"; };
 		52D6D97C1BEFF229002C0205 /* ETLangusta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ETLangusta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9861BEFF229002C0205 /* ETLangusta-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ETLangusta-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9E21BEFFF6E002C0205 /* ETLangusta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ETLangusta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +173,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3830CB2B2126F27B00C77A1A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3830CB1A2126E95400C77A1A /* LangustaData.swift */,
+				3830CB262126F27000C77A1A /* DataProvider.swift */,
+				3830CB2C2126F2BB00C77A1A /* LangustaError.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		52D6D9721BEFF229002C0205 = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +221,7 @@
 		657BE3DA2126C61D004DA5BA /* ETLangustaExample */ = {
 			isa = PBXGroup;
 			children = (
+				3830CB102126E93100C77A1A /* dummy.json */,
 				657BE3DB2126C61D004DA5BA /* AppDelegate.swift */,
 				657BE3DD2126C61D004DA5BA /* ViewController.swift */,
 				657BE3DF2126C61D004DA5BA /* Main.storyboard */,
@@ -218,8 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				3830CB152126E94600C77A1A /* Langusta.swift */,
-				3830CB1A2126E95400C77A1A /* LangustaData.swift */,
-				3830CB102126E93100C77A1A /* dummy.json */,
+				3830CB2B2126F27B00C77A1A /* Model */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -503,7 +520,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3830CB112126E93200C77A1A /* dummy.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,7 +534,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3830CB132126E93500C77A1A /* dummy.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,7 +541,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3830CB142126E93600C77A1A /* dummy.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,7 +548,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3830CB122126E93400C77A1A /* dummy.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,6 +557,7 @@
 			files = (
 				657BE3E62126C61F004DA5BA /* LaunchScreen.storyboard in Resources */,
 				657BE3E32126C61F004DA5BA /* Assets.xcassets in Resources */,
+				3830CB252126F13700C77A1A /* dummy.json in Resources */,
 				657BE3E12126C61D004DA5BA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -586,8 +600,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3830CB272126F27000C77A1A /* DataProvider.swift in Sources */,
 				3830CB162126E94700C77A1A /* Langusta.swift in Sources */,
 				3830CB1B2126E95400C77A1A /* LangustaData.swift in Sources */,
+				3830CB2D2126F2BB00C77A1A /* LangustaError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,8 +619,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3830CB292126F27000C77A1A /* DataProvider.swift in Sources */,
 				3830CB182126E94700C77A1A /* Langusta.swift in Sources */,
 				3830CB1D2126E95400C77A1A /* LangustaData.swift in Sources */,
+				3830CB2F2126F2BB00C77A1A /* LangustaError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,8 +630,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3830CB2A2126F27000C77A1A /* DataProvider.swift in Sources */,
 				3830CB192126E94700C77A1A /* Langusta.swift in Sources */,
 				3830CB1E2126E95400C77A1A /* LangustaData.swift in Sources */,
+				3830CB302126F2BB00C77A1A /* LangustaError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,8 +641,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3830CB282126F27000C77A1A /* DataProvider.swift in Sources */,
 				3830CB172126E94700C77A1A /* Langusta.swift in Sources */,
 				3830CB1C2126E95400C77A1A /* LangustaData.swift in Sources */,
+				3830CB2E2126F2BB00C77A1A /* LangustaError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1034,7 +1056,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = ETLangustaExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cz.etnetera.ETLangustaExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1061,7 +1083,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = ETLangustaExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cz.etnetera.ETLangustaExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";

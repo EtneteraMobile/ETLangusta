@@ -8,61 +8,6 @@
 
 import Foundation
 
-protocol DataProviderType {
-
-    func loadData(completion: ((Data?) -> Void))
-}
-
-class RemoteDataProvider: DataProviderType {
-
-    let url: URL
-
-    init(url: URL) {
-        self.url = url
-    }
-
-    func loadData(completion: ((Data?) -> Void)) {
-        fetchLocalizationJSON(from: url) { (data) in
-            completion(data)
-        }
-    }
-
-    // MARK: Fetching and decoding JSON
-
-    private func fetchLocalizationJSON(from url: URL, completion: ((Data?) -> Void)) {
-        let jsonFile = loadJson(filename: "dummy")!
-        completion(jsonFile)
-
-        // TODO: - Send task to fetch json from server
-        //        let task = URLSession.shared.dataTask(with: url) { data, _, error in
-        //            if let data = data {
-        //                print("✅ Fetched Data from remote url.")
-        //
-        //
-        //            } else if let error = error {
-        //
-        //            }
-        //        }.resume()
-    }
-
-    // MARK: - Helper methods
-
-    // TODO: [Oko] - Get rid of this after remote returns correct json file
-    // Temporary function - get local JSON File
-    private func loadJson(filename fileName: String) -> Data? {
-        if let url = Bundle.main.url(forResource: fileName, withExtension: "json") {
-            do {
-                let data = try Data(contentsOf: url)
-                return data
-            } catch {
-                print("\(error)")
-            }
-        }
-        return nil
-    }
-
-}
-
 public class Langusta {
 
     public class Config {
@@ -73,13 +18,13 @@ public class Langusta {
 
         var dataProvider: DataProviderType
 
-        init(platform: Platform = .iOS, defaultLanguage: String, dataProvider: DataProviderType) {
+       public init(platform: Platform = .iOS, defaultLanguage: String, dataProvider: DataProviderType) {
             self.platform = platform
             self.defaultLanguage = defaultLanguage
             self.dataProvider = dataProvider
         }
 
-        enum Platform: String {
+        public enum Platform: String {
             case universal = "_"
             case iOS = "ios"
             case android = "an"
@@ -108,18 +53,22 @@ public class Langusta {
    private func setupWith(config: Config) {
 
     config.dataProvider.loadData { (data) in
+         print("✅ Data loaded")
 
         // Get LangustaData (languages) from JSON
-        getLangustaData(from: data) { (langustaData) in
+        self.getLangustaData(from: data) { (langustaData) in
+            print("✅ Langusta data created from JSON")
 
             // Make strings in ("Key" = "Value") format
             guard let langustaData = langustaData else { fatalError() }
-            guard let strings = makeLocalizationStrings(from: langustaData) else { fatalError() }
+            guard let strings = self.makeLocalizationStrings(from: langustaData) else { fatalError() }
 
             // Make "language".strings files and return where it is (Bundle)
-            guard let bundle = updateLocalizationFileAndGetHisBundle(with: strings) else { fatalError() }
+            guard let bundle = self.updateLocalizationFileAndGetHisBundle(with: strings) else { fatalError() }
 
             // Use this bundle with NSLocalized
+
+            print("✅ Having Bundle with identifier: \(bundle.bundleIdentifier)")
 
         }
     }
