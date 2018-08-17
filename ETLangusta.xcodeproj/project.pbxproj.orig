@@ -20,6 +20,8 @@
 		3830CB1D2126E95400C77A1A /* LangustaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830CB1A2126E95400C77A1A /* LangustaData.swift */; };
 		3830CB1E2126E95400C77A1A /* LangustaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830CB1A2126E95400C77A1A /* LangustaData.swift */; };
 		52D6D9871BEFF229002C0205 /* ETLangusta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* ETLangusta.framework */; };
+<<<<<<< HEAD
+=======
 		657BE3DC2126C61D004DA5BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657BE3DB2126C61D004DA5BA /* AppDelegate.swift */; };
 		657BE3DE2126C61D004DA5BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657BE3DD2126C61D004DA5BA /* ViewController.swift */; };
 		657BE3E12126C61D004DA5BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 657BE3DF2126C61D004DA5BA /* Main.storyboard */; };
@@ -27,6 +29,11 @@
 		657BE3E62126C61F004DA5BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 657BE3E42126C61F004DA5BA /* LaunchScreen.storyboard */; };
 		657BE3EB2126EB9C004DA5BA /* ETLangusta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* ETLangusta.framework */; };
 		657BE3EC2126EB9C004DA5BA /* ETLangusta.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* ETLangusta.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8933C7851EB5B820000D00A4 /* ETLangusta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7841EB5B820000D00A4 /* ETLangusta.swift */; };
+		8933C7861EB5B820000D00A4 /* ETLangusta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7841EB5B820000D00A4 /* ETLangusta.swift */; };
+		8933C7871EB5B820000D00A4 /* ETLangusta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7841EB5B820000D00A4 /* ETLangusta.swift */; };
+		8933C7881EB5B820000D00A4 /* ETLangusta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7841EB5B820000D00A4 /* ETLangusta.swift */; };
+>>>>>>> feature/exampleProject
 		8933C78E1EB5B82C000D00A4 /* ETLangustaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7891EB5B82A000D00A4 /* ETLangustaTests.swift */; };
 		8933C78F1EB5B82C000D00A4 /* ETLangustaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7891EB5B82A000D00A4 /* ETLangustaTests.swift */; };
 		8933C7901EB5B82D000D00A4 /* ETLangustaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7891EB5B82A000D00A4 /* ETLangustaTests.swift */; };
@@ -88,6 +95,8 @@
 		52D6D9E21BEFFF6E002C0205 /* ETLangusta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ETLangusta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9F01BEFFFBE002C0205 /* ETLangusta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ETLangusta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6DA0F1BF000BD002C0205 /* ETLangusta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ETLangusta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+<<<<<<< HEAD
+=======
 		657BE3D92126C61D004DA5BA /* ETLangustaExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ETLangustaExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		657BE3DB2126C61D004DA5BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		657BE3DD2126C61D004DA5BA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +104,8 @@
 		657BE3E22126C61F004DA5BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		657BE3E52126C61F004DA5BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		657BE3E72126C61F004DA5BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8933C7841EB5B820000D00A4 /* ETLangusta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ETLangusta.swift; sourceTree = "<group>"; };
+>>>>>>> feature/exampleProject
 		8933C7891EB5B82A000D00A4 /* ETLangustaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ETLangustaTests.swift; sourceTree = "<group>"; };
 		AD2FAA261CD0B6D800659CF4 /* ETLangusta.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ETLangusta.plist; sourceTree = "<group>"; };
 		AD2FAA281CD0B6E100659CF4 /* ETLangustaTests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ETLangustaTests.plist; sourceTree = "<group>"; };
@@ -436,7 +447,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Etnetera a.s.";
 				TargetAttributes = {
 					52D6D97B1BEFF229002C0205 = {
@@ -708,14 +719,12 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -767,14 +776,12 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
