@@ -1,0 +1,32 @@
+{
+    "version" : "5",
+    "localizations" : {
+        "cs" : {
+            "_" : {                                                             
+                "k1" : "v uaaa💩",
+                "k2" : "💩val2",
+                "k3" : "val3💩"
+            },
+            "an" : { "k2" : "Android val2"},
+            "ios" : { "k3" : "iOS val3"}
+        },
+        "en" : {
+            "_" : {
+                "k1" : "💩english1 uaaa",
+                "k2" : "💩english2",
+                "k3" : "💩english3"
+            },
+            "an" : { "k2" : "English Android💩"},
+            "ios" : { "k3" : "English iOS💩"}
+        },
+        "esperanto" : {
+            "_" : {
+                "k1" : "💩esperanto tuaaa",
+                "k2" : "💩esperanto 4",
+                "k3" : "💩esperanto 3"
+            },
+            "an" : { "k2" : "esperanto💩 Android"},
+            "ios" : { "k3" : "esperanto💩 iOS"}
+        }
+    }
+}
