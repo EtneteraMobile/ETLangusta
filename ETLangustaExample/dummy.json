@@ -3,7 +3,7 @@
     "localizations" : {
         "cs" : {
             "_" : {                                                             
-                "k1" : "val1",
+                "k1" : "v",
                 "k2" : "val2",
                 "k3" : "val3"
             },
