@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		52D6D9871BEFF229002C0205 /* ETLangusta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* ETLangusta.framework */; };
+		657BE3DC2126C61D004DA5BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657BE3DB2126C61D004DA5BA /* AppDelegate.swift */; };
+		657BE3DE2126C61D004DA5BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657BE3DD2126C61D004DA5BA /* ViewController.swift */; };
+		657BE3E12126C61D004DA5BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 657BE3DF2126C61D004DA5BA /* Main.storyboard */; };
+		657BE3E32126C61F004DA5BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 657BE3E22126C61F004DA5BA /* Assets.xcassets */; };
+		657BE3E62126C61F004DA5BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 657BE3E42126C61F004DA5BA /* LaunchScreen.storyboard */; };
+		657BE3EB2126EB9C004DA5BA /* ETLangusta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* ETLangusta.framework */; };
+		657BE3EC2126EB9C004DA5BA /* ETLangusta.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* ETLangusta.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8933C7851EB5B820000D00A4 /* ETLangusta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7841EB5B820000D00A4 /* ETLangusta.swift */; };
 		8933C7861EB5B820000D00A4 /* ETLangusta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7841EB5B820000D00A4 /* ETLangusta.swift */; };
 		8933C7871EB5B820000D00A4 /* ETLangusta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7841EB5B820000D00A4 /* ETLangusta.swift */; };
@@ -27,6 +34,13 @@
 			remoteGlobalIDString = 52D6D97B1BEFF229002C0205;
 			remoteInfo = ETLangusta;
 		};
+		657BE3ED2126EB9C004DA5BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52D6D9731BEFF229002C0205 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52D6D97B1BEFF229002C0205;
+			remoteInfo = "ETLangusta-iOS";
+		};
 		DD7502801C68FCFC006590AF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 52D6D9731BEFF229002C0205 /* Project object */;
@@ -43,12 +57,33 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		657BE3EF2126EB9C004DA5BA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				657BE3EC2126EB9C004DA5BA /* ETLangusta.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		52D6D97C1BEFF229002C0205 /* ETLangusta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ETLangusta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9861BEFF229002C0205 /* ETLangusta-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ETLangusta-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9E21BEFFF6E002C0205 /* ETLangusta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ETLangusta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9F01BEFFFBE002C0205 /* ETLangusta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ETLangusta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6DA0F1BF000BD002C0205 /* ETLangusta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ETLangusta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		657BE3D92126C61D004DA5BA /* ETLangustaExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ETLangustaExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		657BE3DB2126C61D004DA5BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		657BE3DD2126C61D004DA5BA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		657BE3E02126C61D004DA5BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		657BE3E22126C61F004DA5BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		657BE3E52126C61F004DA5BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		657BE3E72126C61F004DA5BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8933C7841EB5B820000D00A4 /* ETLangusta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ETLangusta.swift; sourceTree = "<group>"; };
 		8933C7891EB5B82A000D00A4 /* ETLangustaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ETLangustaTests.swift; sourceTree = "<group>"; };
 		AD2FAA261CD0B6D800659CF4 /* ETLangusta.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ETLangusta.plist; sourceTree = "<group>"; };
@@ -94,6 +129,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		657BE3D62126C61D004DA5BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				657BE3EB2126EB9C004DA5BA /* ETLangusta.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DD7502771C68FCFC006590AF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -119,6 +162,7 @@
 				8933C7811EB5B7E0000D00A4 /* Sources */,
 				8933C7831EB5B7EB000D00A4 /* Tests */,
 				52D6D99C1BEFF38C002C0205 /* Configs */,
+				657BE3DA2126C61D004DA5BA /* ETLangustaExample */,
 				52D6D97D1BEFF229002C0205 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -133,6 +177,7 @@
 				52D6DA0F1BF000BD002C0205 /* ETLangusta.framework */,
 				DD75027A1C68FCFC006590AF /* ETLangusta-macOS Tests.xctest */,
 				DD75028D1C690C7A006590AF /* ETLangusta-tvOS Tests.xctest */,
+				657BE3D92126C61D004DA5BA /* ETLangustaExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,6 +189,19 @@
 				DD7502731C68FC20006590AF /* Tests */,
 			);
 			path = Configs;
+			sourceTree = "<group>";
+		};
+		657BE3DA2126C61D004DA5BA /* ETLangustaExample */ = {
+			isa = PBXGroup;
+			children = (
+				657BE3DB2126C61D004DA5BA /* AppDelegate.swift */,
+				657BE3DD2126C61D004DA5BA /* ViewController.swift */,
+				657BE3DF2126C61D004DA5BA /* Main.storyboard */,
+				657BE3E22126C61F004DA5BA /* Assets.xcassets */,
+				657BE3E42126C61F004DA5BA /* LaunchScreen.storyboard */,
+				657BE3E72126C61F004DA5BA /* Info.plist */,
+			);
+			path = ETLangustaExample;
 			sourceTree = "<group>";
 		};
 		8933C7811EB5B7E0000D00A4 /* Sources */ = {
@@ -303,6 +361,25 @@
 			productReference = 52D6DA0F1BF000BD002C0205 /* ETLangusta.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		657BE3D82126C61D004DA5BA /* ETLangustaExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 657BE3EA2126C61F004DA5BA /* Build configuration list for PBXNativeTarget "ETLangustaExample" */;
+			buildPhases = (
+				657BE3D52126C61D004DA5BA /* Sources */,
+				657BE3D62126C61D004DA5BA /* Frameworks */,
+				657BE3D72126C61D004DA5BA /* Resources */,
+				657BE3EF2126EB9C004DA5BA /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				657BE3EE2126EB9C004DA5BA /* PBXTargetDependency */,
+			);
+			name = ETLangustaExample;
+			productName = ETLangustaExample;
+			productReference = 657BE3D92126C61D004DA5BA /* ETLangustaExample.app */;
+			productType = "com.apple.product-type.application";
+		};
 		DD7502791C68FCFC006590AF /* ETLangusta-macOS Tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD7502821C68FCFC006590AF /* Build configuration list for PBXNativeTarget "ETLangusta-macOS Tests" */;
@@ -345,7 +422,7 @@
 		52D6D9731BEFF229002C0205 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Etnetera a.s.";
 				TargetAttributes = {
@@ -369,6 +446,10 @@
 						CreatedOnToolsVersion = 7.1;
 						LastSwiftMigration = 0800;
 					};
+					657BE3D82126C61D004DA5BA = {
+						CreatedOnToolsVersion = 9.4;
+						ProvisioningStyle = Automatic;
+					};
 					DD7502791C68FCFC006590AF = {
 						CreatedOnToolsVersion = 7.2.1;
 						LastSwiftMigration = 0800;
@@ -385,6 +466,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 52D6D9721BEFF229002C0205;
 			productRefGroup = 52D6D97D1BEFF229002C0205 /* Products */;
@@ -398,6 +480,7 @@
 				52D6D9851BEFF229002C0205 /* ETLangusta-iOS Tests */,
 				DD7502791C68FCFC006590AF /* ETLangusta-macOS Tests */,
 				DD75028C1C690C7A006590AF /* ETLangusta-tvOS Tests */,
+				657BE3D82126C61D004DA5BA /* ETLangustaExample */,
 			);
 		};
 /* End PBXProject section */
@@ -435,6 +518,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		657BE3D72126C61D004DA5BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				657BE3E62126C61F004DA5BA /* LaunchScreen.storyboard in Resources */,
+				657BE3E32126C61F004DA5BA /* Assets.xcassets in Resources */,
+				657BE3E12126C61D004DA5BA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,6 +588,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		657BE3D52126C61D004DA5BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				657BE3DE2126C61D004DA5BA /* ViewController.swift in Sources */,
+				657BE3DC2126C61D004DA5BA /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DD7502761C68FCFC006590AF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -519,6 +621,11 @@
 			target = 52D6D97B1BEFF229002C0205 /* ETLangusta-iOS */;
 			targetProxy = 52D6D9881BEFF229002C0205 /* PBXContainerItemProxy */;
 		};
+		657BE3EE2126EB9C004DA5BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52D6D97B1BEFF229002C0205 /* ETLangusta-iOS */;
+			targetProxy = 657BE3ED2126EB9C004DA5BA /* PBXContainerItemProxy */;
+		};
 		DD7502811C68FCFC006590AF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 52D6DA0E1BF000BD002C0205 /* ETLangusta-macOS */;
@@ -530,6 +637,25 @@
 			targetProxy = DD7502931C690C7A006590AF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		657BE3DF2126C61D004DA5BA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				657BE3E02126C61D004DA5BA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		657BE3E42126C61F004DA5BA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				657BE3E52126C61F004DA5BA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		52D6D98E1BEFF229002C0205 /* Debug */ = {
@@ -644,6 +770,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -667,6 +794,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -847,6 +975,60 @@
 			};
 			name = Release;
 		};
+		657BE3E82126C61F004DA5BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = ETLangustaExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cz.etnetera.ETLangustaExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		657BE3E92126C61F004DA5BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = ETLangustaExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cz.etnetera.ETLangustaExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		DD7502831C68FCFC006590AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -958,6 +1140,15 @@
 			buildConfigurations = (
 				52D6DA211BF000BD002C0205 /* Debug */,
 				52D6DA221BF000BD002C0205 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		657BE3EA2126C61F004DA5BA /* Build configuration list for PBXNativeTarget "ETLangustaExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				657BE3E82126C61F004DA5BA /* Debug */,
+				657BE3E92126C61F004DA5BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
