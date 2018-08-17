@@ -20,13 +20,14 @@ class ViewController: UIViewController {
 
         setupViews()
 
-        let dataProvider = RemoteDataProvider(url: URL(string: "https://api.myjson.com/bins/npnl0")!)
-        let config = Langusta.Config(defaultLanguage: "cz", dataProvider: dataProvider)
+        let url = URL(string: "https://api.myjson.com/bins/npnl0")
+        let dataProvider = DataProvider(backupFile: "dummy", url: url!) // swiftlint:disable:this force_unwrapping
+        let config = Langusta.Config(defaultLanguage: "cs", dataProvider: dataProvider)
         let langusta = Langusta(config: config)
 
-        localizedLabel.text = "loca1"
+        localizedLabel.text = langusta.loca(for: "k1")
         localizedLabel2.text = "loca2"
-        localizedLabel3.text = "loca3"
+        localizedLabel3.text = langusta.loca(for: "k3")
     }
 
     private func setupViews() {
