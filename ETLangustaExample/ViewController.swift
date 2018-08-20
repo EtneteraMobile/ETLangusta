@@ -23,7 +23,7 @@ class ViewController: UIViewController {
 
         setupViews()
 
-        let dataProvider = DataProvider(backupFile: "dummy", url: URL(string: "https://api.myjson.com/bins/npnl0")!) // swiftlint:disable:this force_unwrapping
+        let dataProvider = DataProvider(backupFile: "dummy", url: URL(string: "https://raw.githubusercontent.com/EtneteraMobile/ETLangusta/feature/InitialConfig/ETLangustaExample/remote.json")!) // swiftlint:disable:this force_unwrapping
         let config = Langusta.Config(supportedLaguages: [.cs, .en, .custom(code: "esperanto")], defaultLanguage: .cs, dataProvider: dataProvider)
         langusta = Langusta(config: config)
         langusta?.fetch()
