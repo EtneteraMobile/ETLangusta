@@ -27,10 +27,12 @@ class ViewController: UIViewController {
         let config = Langusta.Config(supportedLaguages: [.cs, .en, .custom(code: "esperanto")], defaultLanguage: .cs, dataProvider: dataProvider)
         langusta = Langusta(config: config)
         langusta?.fetch()
-        langusta?.onUpdate = { [weak self] in
-            self?.updateLocalizations()
+
+        langusta?.onUpdate.observe(on: self) { [unowned self] in
+            self.updateLocalizations()
         }
-        updateLocalizations()
+
+        langusta?.onUpdate.trigger()
     }
 
     private func updateLocalizations() {

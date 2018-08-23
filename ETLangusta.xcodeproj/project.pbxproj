@@ -32,6 +32,22 @@
 		657BE3F72127468C004DA5BA /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657BE3F52127468C004DA5BA /* DataProvider.swift */; };
 		657BE3F82127468C004DA5BA /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657BE3F52127468C004DA5BA /* DataProvider.swift */; };
 		657BE3F92127468C004DA5BA /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657BE3F52127468C004DA5BA /* DataProvider.swift */; };
+		65A09150212EFB7D000D7EDB /* DataProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0914F212EFB7D000D7EDB /* DataProviderType.swift */; };
+		65A09151212EFB7D000D7EDB /* DataProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0914F212EFB7D000D7EDB /* DataProviderType.swift */; };
+		65A09152212EFB7D000D7EDB /* DataProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0914F212EFB7D000D7EDB /* DataProviderType.swift */; };
+		65A09153212EFB7D000D7EDB /* DataProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0914F212EFB7D000D7EDB /* DataProviderType.swift */; };
+		65A0915D212EFE77000D7EDB /* LanguastaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0915C212EFE77000D7EDB /* LanguastaType.swift */; };
+		65A0915E212EFE77000D7EDB /* LanguastaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0915C212EFE77000D7EDB /* LanguastaType.swift */; };
+		65A0915F212EFE77000D7EDB /* LanguastaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0915C212EFE77000D7EDB /* LanguastaType.swift */; };
+		65A09160212EFE77000D7EDB /* LanguastaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0915C212EFE77000D7EDB /* LanguastaType.swift */; };
+		65A09162212EFEDD000D7EDB /* Langusta+Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A09161212EFEDD000D7EDB /* Langusta+Language.swift */; };
+		65A09163212EFEDD000D7EDB /* Langusta+Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A09161212EFEDD000D7EDB /* Langusta+Language.swift */; };
+		65A09164212EFEDD000D7EDB /* Langusta+Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A09161212EFEDD000D7EDB /* Langusta+Language.swift */; };
+		65A09165212EFEDD000D7EDB /* Langusta+Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A09161212EFEDD000D7EDB /* Langusta+Language.swift */; };
+		65A09169212F6718000D7EDB /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A09168212F6718000D7EDB /* Event.swift */; };
+		65A0916A212F6718000D7EDB /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A09168212F6718000D7EDB /* Event.swift */; };
+		65A0916B212F6718000D7EDB /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A09168212F6718000D7EDB /* Event.swift */; };
+		65A0916C212F6718000D7EDB /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A09168212F6718000D7EDB /* Event.swift */; };
 		8933C78E1EB5B82C000D00A4 /* ETLangustaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7891EB5B82A000D00A4 /* ETLangustaTests.swift */; };
 		8933C78F1EB5B82C000D00A4 /* ETLangustaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7891EB5B82A000D00A4 /* ETLangustaTests.swift */; };
 		8933C7901EB5B82D000D00A4 /* ETLangustaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7891EB5B82A000D00A4 /* ETLangustaTests.swift */; };
@@ -102,6 +118,10 @@
 		657BE3E52126C61F004DA5BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		657BE3E72126C61F004DA5BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		657BE3F52127468C004DA5BA /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		65A0914F212EFB7D000D7EDB /* DataProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProviderType.swift; sourceTree = "<group>"; };
+		65A0915C212EFE77000D7EDB /* LanguastaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguastaType.swift; sourceTree = "<group>"; };
+		65A09161212EFEDD000D7EDB /* Langusta+Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Langusta+Language.swift"; sourceTree = "<group>"; };
+		65A09168212F6718000D7EDB /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		8933C7891EB5B82A000D00A4 /* ETLangustaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ETLangustaTests.swift; sourceTree = "<group>"; };
 		AD2FAA261CD0B6D800659CF4 /* ETLangusta.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ETLangusta.plist; sourceTree = "<group>"; };
 		AD2FAA281CD0B6E100659CF4 /* ETLangustaTests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ETLangustaTests.plist; sourceTree = "<group>"; };
@@ -178,6 +198,7 @@
 			children = (
 				3830CB1A2126E95400C77A1A /* LangustaData.swift */,
 				3830CB2C2126F2BB00C77A1A /* LangustaError.swift */,
+				65A09161212EFEDD000D7EDB /* Langusta+Language.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -231,11 +252,22 @@
 			path = ETLangustaExample;
 			sourceTree = "<group>";
 		};
-		8933C7811EB5B7E0000D00A4 /* Sources */ = {
+		65A0914E212EFB5F000D7EDB /* DataProvider */ = {
 			isa = PBXGroup;
 			children = (
 				657BE3F52127468C004DA5BA /* DataProvider.swift */,
+				65A0914F212EFB7D000D7EDB /* DataProviderType.swift */,
+			);
+			path = DataProvider;
+			sourceTree = "<group>";
+		};
+		8933C7811EB5B7E0000D00A4 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				65A0915C212EFE77000D7EDB /* LanguastaType.swift */,
 				3830CB152126E94600C77A1A /* Langusta.swift */,
+				65A09168212F6718000D7EDB /* Event.swift */,
+				65A0914E212EFB5F000D7EDB /* DataProvider */,
 				3830CB2B2126F27B00C77A1A /* Model */,
 			);
 			path = Sources;
@@ -478,6 +510,7 @@
 					};
 					657BE3D82126C61D004DA5BA = {
 						CreatedOnToolsVersion = 9.4;
+						DevelopmentTeam = 6L328QR57Q;
 						ProvisioningStyle = Automatic;
 					};
 					DD7502791C68FCFC006590AF = {
@@ -600,9 +633,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65A09169212F6718000D7EDB /* Event.swift in Sources */,
+				65A09162212EFEDD000D7EDB /* Langusta+Language.swift in Sources */,
 				3830CB162126E94700C77A1A /* Langusta.swift in Sources */,
 				657BE3F62127468C004DA5BA /* DataProvider.swift in Sources */,
 				3830CB1B2126E95400C77A1A /* LangustaData.swift in Sources */,
+				65A0915D212EFE77000D7EDB /* LanguastaType.swift in Sources */,
+				65A09150212EFB7D000D7EDB /* DataProviderType.swift in Sources */,
 				3830CB2D2126F2BB00C77A1A /* LangustaError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -619,9 +656,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65A0916B212F6718000D7EDB /* Event.swift in Sources */,
+				65A09164212EFEDD000D7EDB /* Langusta+Language.swift in Sources */,
 				3830CB182126E94700C77A1A /* Langusta.swift in Sources */,
 				657BE3F82127468C004DA5BA /* DataProvider.swift in Sources */,
 				3830CB1D2126E95400C77A1A /* LangustaData.swift in Sources */,
+				65A0915F212EFE77000D7EDB /* LanguastaType.swift in Sources */,
+				65A09152212EFB7D000D7EDB /* DataProviderType.swift in Sources */,
 				3830CB2F2126F2BB00C77A1A /* LangustaError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -630,9 +671,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65A0916C212F6718000D7EDB /* Event.swift in Sources */,
+				65A09165212EFEDD000D7EDB /* Langusta+Language.swift in Sources */,
 				3830CB192126E94700C77A1A /* Langusta.swift in Sources */,
 				657BE3F92127468C004DA5BA /* DataProvider.swift in Sources */,
 				3830CB1E2126E95400C77A1A /* LangustaData.swift in Sources */,
+				65A09160212EFE77000D7EDB /* LanguastaType.swift in Sources */,
+				65A09153212EFB7D000D7EDB /* DataProviderType.swift in Sources */,
 				3830CB302126F2BB00C77A1A /* LangustaError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -641,9 +686,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65A0916A212F6718000D7EDB /* Event.swift in Sources */,
+				65A09163212EFEDD000D7EDB /* Langusta+Language.swift in Sources */,
 				3830CB172126E94700C77A1A /* Langusta.swift in Sources */,
 				657BE3F72127468C004DA5BA /* DataProvider.swift in Sources */,
 				3830CB1C2126E95400C77A1A /* LangustaData.swift in Sources */,
+				65A0915E212EFE77000D7EDB /* LanguastaType.swift in Sources */,
+				65A09151212EFB7D000D7EDB /* DataProviderType.swift in Sources */,
 				3830CB2E2126F2BB00C77A1A /* LangustaError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1054,11 +1103,12 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6L328QR57Q;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = ETLangustaExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cz.etnetera.ETLangustaExample;
+				PRODUCT_BUNDLE_IDENTIFIER = cz.etnetera.poo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 4.0;
@@ -1081,11 +1131,12 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6L328QR57Q;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = ETLangustaExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cz.etnetera.ETLangustaExample;
+				PRODUCT_BUNDLE_IDENTIFIER = cz.etnetera.poo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;

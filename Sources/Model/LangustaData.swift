@@ -10,22 +10,18 @@ import Foundation
 
 struct LangustaData: Decodable {
 
-    var version: String
-    var localizations: Langusta.Localizations = [:]
+    let version: String
+    let localizations: Langusta.Localizations
 
-    private var languages: [Language]
-
-    private enum CodingKeys: String, CodingKey {
-        case version
-        case languages = "localizations"
-    }
+    private let languages: [Language]
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         version = try container.decode(String.self, forKey: .version)
 
         let languagesWithContent = try container.decode([String: Language].self, forKey: .languages)
-        languages = []
+        var languages = [Language]()
+        var localizations = Langusta.Localizations()
         for item in languagesWithContent {
             let language = Language(name: item.key, commonContent: item.value.commonContent, iosContent: item.value.iosContent)
             languages.append(language)
@@ -34,17 +30,27 @@ struct LangustaData: Decodable {
 
             localizations[item.key] = mergedContent
         }
+
+        self.localizations = localizations
+        self.languages = languages
     }
 }
 
-private struct Language: Decodable {
-    var name: String?
-    var commonContent: [String: String]
-    var iosContent: [String: String]
+private extension LangustaData {
+    struct Language: Decodable {
+        var name: String?
+        var commonContent: [String: String]
+        var iosContent: [String: String]
 
-    private enum CodingKeys: String, CodingKey {
-        case name
-        case commonContent = "_"
-        case iosContent = "ios"
+        private enum CodingKeys: String, CodingKey {
+            case name
+            case commonContent = "_"
+            case iosContent = "ios"
+        }
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case version
+        case languages = "localizations"
     }
 }

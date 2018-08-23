@@ -8,28 +8,19 @@
 
 import Foundation
 
-protocol LangustaType {
-    func fetch()
-    func change(_ language: Langusta.Language)
-    func loca(for key: String) -> String
-    func loca(for key: String, with argument: String) -> String
-    func loca(for key: String, with arguments: [String]) -> String
-
-    var onUpdate: (() -> Void)? { get set }
-    var onLocalizationFailure: ((_ message: String) -> Void)? { get set }
-}
-
 public class Langusta: LangustaType {
 
-    public typealias Localizations = [String: [String: String]]
-    public typealias LanguageCode = String
+    // MARK: Public
+
+    typealias Localizations = [String: [String: String]]
+    private typealias LanguageCode = String
 
     public func change(_ language: Language) {
         config.defaultLanguage = language
-        onUpdate?()
+        onUpdate.trigger()
     }
 
-    public var onUpdate: (() -> Void)? // TODO: future event (ETBinding)
+    public var onUpdate = Event()
     public var onLocalizationFailure: ((_ message: String) -> Void)?
 
     public class Config {
@@ -57,32 +48,9 @@ public class Langusta: LangustaType {
         }
     }
 
-    public static func getLanguageCodes(for languages: [Language]) -> [LanguageCode] {
+    private static func getLanguageCodes(for languages: [Language]) -> [LanguageCode] {
         return languages.map {
             $0.code
-        }
-    }
-
-    // MARK: Public
-
-    public enum Language {
-        // TODO: add languages 
-        case en
-        case cs
-        case sk
-        case custom(code: String)
-
-        public var code: String {
-            switch self {
-            case .en:
-                return "en"
-            case .cs:
-                return "cs"
-            case .sk:
-                return "sk"
-            case .custom(let code):
-                return code
-            }
         }
     }
 
@@ -96,6 +64,7 @@ public class Langusta: LangustaType {
     private var config: Config
 
     private var valuePolicy: ValuePolicy = .exceptionIfMissing
+
     enum ValuePolicy {
         case noException
         case exceptionIfMissing
@@ -199,7 +168,7 @@ public class Langusta: LangustaType {
             }
 
             DispatchQueue.main.async {
-                wSelf.onUpdate?() // TODO!!!
+                wSelf.onUpdate.trigger()
             }
         }
     }
@@ -223,6 +192,7 @@ public class Langusta: LangustaType {
         guard let data = data else {
             return nil
         }
+
         let langustaData = try? JSONDecoder().decode(LangustaData.self, from: data)
         return langustaData
     }

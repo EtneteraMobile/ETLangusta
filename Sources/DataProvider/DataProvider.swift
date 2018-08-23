@@ -8,16 +8,10 @@
 
 import Foundation
 
-public protocol DataProviderType {
-    func getLocalData() -> Data
-    func loadData(completion: @escaping ((Data?) -> Void))
-    func loadData(platform: String?, language: String?, currentVersion: String?, completion: @escaping ((Data?) -> Void))
-}
-
 public class DataProvider: DataProviderType {
 
-    let backupFile: String
-    let url: URL?
+    private let backupFile: String
+    private let url: URL?
 
     public init(backupFile: String, url: URL?) {
         self.backupFile = backupFile
@@ -26,7 +20,6 @@ public class DataProvider: DataProviderType {
 
     public func getLocalData() -> Data {
         return getJsonFromMainBundle(with: backupFile)
-
     }
 
     public func loadData(completion: @escaping ((Data?) -> Void)) {
@@ -50,10 +43,12 @@ public class DataProvider: DataProviderType {
             completion(data)
         }
     }
+}
 
+private extension DataProvider {
     // MARK: Fetching and decoding JSON
 
-    private func fetchLocalizationJSON(platform: String?, language: String?, currentVersion: String?, from url: URL, completion: @escaping ((Data?) -> Void)) {
+    func fetchLocalizationJSON(platform: String?, language: String?, currentVersion: String?, from url: URL, completion: @escaping ((Data?) -> Void)) {
         var components = URLComponents(string: url.absoluteString)! // swiftlint:disable:this force_unwrapping
 
         var queryItems: [URLQueryItem] = []
@@ -83,11 +78,11 @@ public class DataProvider: DataProviderType {
 
             completion(data)
         }
-        print("Sending: \(task.currentRequest)")
+
         task.resume()
     }
 
-    private func fetchLocalizationJSON(from url: URL, completion: @escaping ((Data?) -> Void)) {
+    func fetchLocalizationJSON(from url: URL, completion: @escaping ((Data?) -> Void)) {
 
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
             if let data = data {
@@ -106,7 +101,7 @@ public class DataProvider: DataProviderType {
     // MARK: - Helper methods
 
     // Temporary function - get local JSON File
-    private func getJsonFromMainBundle(with filename: String) -> Data {
+    func getJsonFromMainBundle(with filename: String) -> Data {
         if let url = Bundle.main.url(forResource: filename, withExtension: "json") {
             do {
                 let data = try Data(contentsOf: url)
@@ -117,5 +112,4 @@ public class DataProvider: DataProviderType {
         }
         preconditionFailure("🦀 Can't find \(filename).json in main bundle")
     }
-
 }
