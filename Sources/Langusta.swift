@@ -24,18 +24,22 @@ public class Langusta: LangustaType {
     public var onLocalizationFailure: ((_ message: String) -> Void)?
 
     public class Config {
-        var platform: Platform = .iOS // require
-        var supportedLaguages: [Language]
+
         var defaultLanguage: Language
-        var dataProvider: DataProviderType
-        var fetchOnInit: Bool
+
+        let platform: Platform
+        let supportedLaguages: [Language]
+        let dataProvider: DataProviderType
+        let fetchOnInit: Bool
 
         public init(platform: Platform = .iOS, supportedLaguages: [Language], defaultLanguage: Language, dataProvider: DataProviderType, fetchOnInit: Bool = false) {
-            self.platform = platform
-            self.supportedLaguages = supportedLaguages
-            guard Langusta.getLanguageCodes(for: supportedLaguages).contains(defaultLanguage.code) else {
+            let supportedLangCodes = supportedLaguages.map { $0.code }
+            guard supportedLangCodes.contains(defaultLanguage.code) else {
                 preconditionFailure("default language is not in supported languages")
             }
+
+            self.platform = platform
+            self.supportedLaguages = supportedLaguages
             self.defaultLanguage = defaultLanguage
             self.dataProvider = dataProvider
             self.fetchOnInit = fetchOnInit
